@@ -24,9 +24,9 @@ class UserFilterFormType extends FilterFormType
             ->add('user_type', ChoiceType::class, [
                 'label' => 'User Type',
                 'choices' => [
-                    'all' => 'All Users',
-                    'non_admin' => 'Exclude Administrators',
-                    'admin_only' => 'Only Administrators',
+                    'All Users' => 'all',
+                    'Exclude Administrators' => 'non_admin',
+                    'Only Administrators' => 'admin_only',
                 ],
             ])
             ->add('only_active', CheckboxType::class, [
