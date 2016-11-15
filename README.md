@@ -1,6 +1,8 @@
 # XMUserAdminBundle
 Provides a simple user admin.
 
+**CSS & JS + usage can be found in the [Symfony Starter](https://github.com/xmmedia/starter_symfony).** You can also use your own CSS & JS.
+
 ## Installation
 
 ### Step 1: Download the Bundle
