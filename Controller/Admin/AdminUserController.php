@@ -2,6 +2,7 @@
 
 namespace XM\UserAdminBundle\Controller\Admin;
 
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -331,7 +332,7 @@ class AdminUserController extends Controller
         $form = $this->createFormBuilder()
             ->setAction($this->generateUrl($route, ['id' => $user->getId()]))
             ->setMethod('POST')
-            ->add('button', 'submit', ['label' => $buttonLabel])
+            ->add('button', SubmitType::class, ['label' => $buttonLabel])
             ->getForm()
         ;
 
