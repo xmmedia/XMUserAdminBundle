@@ -447,7 +447,7 @@ class AdminUserController extends Controller
      */
     protected function redirectToList()
     {
-        $redirectUrl = $this->generateUrl('xm_user_xm_user_admin_user_list');
+        $redirectUrl = $this->generateUrl('xm_user_admin_user_list');
         $redirectUrl .= '?'.$this->get('xm_user_admin.filter.user')->query();
 
         return $this->redirect($redirectUrl, 301);
