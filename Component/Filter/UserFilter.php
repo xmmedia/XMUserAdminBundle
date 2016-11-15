@@ -40,7 +40,6 @@ class UserFilter extends FilterComponent
     {
         $filters = $this->getFormData();
         $qb = $repo->createQueryBuilder('u')
-            ->andWhere('u.expired = false')
             ->orderBy('u.email', 'ASC')
         ;
 
