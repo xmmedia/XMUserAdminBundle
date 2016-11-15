@@ -1,0 +1,11 @@
+{% extends '::admin.html.twig' %}
+
+{% block page_title %}Create | Users | {% endblock %}
+{% block header_page_title %}Create User{% endblock %}
+
+{% block content %}
+    {% include 'flash_messages.html.twig' %}
+
+    {% embed 'XMUserAdminBundle:AdminUser:user_form.html.twig' %}
+    {% endembed %}
+{% endblock content %}

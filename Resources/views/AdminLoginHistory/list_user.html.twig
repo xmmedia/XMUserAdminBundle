@@ -1,0 +1,36 @@
+{% extends '::admin.html.twig' %}
+
+{% block page_title %}Login History | {% endblock %}
+{% block header_page_title %}Login History for {{ user.name }}{% endblock %}
+{% block header_actions %}
+    <a href="{{ path('xm_user_admin_user_list') ~ '?' ~ user_filter.query() }}" class="header_admin-action header_admin-action-secondary">Back to Users</a>
+{% endblock %}
+
+{% block content %}
+    {% include 'flash_messages.html.twig' %}
+
+    <div>Login history for {{ user.name }} ({{ user.username }}):</div>
+
+    {{ knp_pagination_render(auth_logs) }}
+    <div class="record_list-record_count">Showing {{ auth_logs.count() }} of {{ auth_logs.getTotalItemCount() }}</div>
+
+    <ul class="record_list-wrap">
+        <li class="record_list-headers">
+            <div class="record_list-col">Date/Time</div>
+            <div class="record_list-col">Browser/User Agent</div>
+            <div class="record_list-col">IP Address</div>
+        </li>
+
+        {% for auth_log in auth_logs %}
+            <li>
+                <div class="record_list-col record_list-col-no_wrap">
+                    <cs-time datetime="{{ auth_log.datetime|date('c') }}">{{ auth_log.datetime|date('Y-m-d H:i') }}</cs-time>
+                </div>
+                <div class="record_list-col">{{ auth_log.userAgent }}</div>
+                <div class="record_list-col">{{ auth_log.ipAddress }}</div>
+            </li>
+        {% endfor %}
+    </ul>
+
+    {{ knp_pagination_render(auth_logs) }}
+{% endblock content %}

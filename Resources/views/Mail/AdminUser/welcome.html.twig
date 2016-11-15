@@ -1,0 +1,19 @@
+{% extends 'Mail/base.html.twig' %}
+
+{% trans_default_domain 'XMSecurityBundle' %}
+
+{% block subject %}Welcome to {{ 'xm_security.parameter.name'|trans }}{% endblock %}
+
+{% block body_text_inner %}{% endblock %}
+
+{% block body_html_inner %}
+    <p>Welcome to {{ 'xm_security.parameter.name'|trans }}</p>
+
+    <p>An account has been created for you. Your username is:</p>
+
+    <div style="margin-left: 20px;">
+        Username: {{ user.username }}
+    </div>
+
+    <p>To set your password and login, use this link: <a href="{{ uri }}">{{ uri }}</a></p>
+{% endblock body_html_inner %}

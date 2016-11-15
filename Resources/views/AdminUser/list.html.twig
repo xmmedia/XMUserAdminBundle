@@ -1,0 +1,76 @@
+{% extends '::admin.html.twig' %}
+
+{% block page_title %}Users | {% endblock %}
+{% block header_page_title %}Users{% endblock %}
+{% block header_actions %}
+    <a href="{{ path('xm_user_admin_user_new') }}" class="header_admin-action header_admin-action-main header_admin-action-user">Add User</a>
+{% endblock %}
+
+{% block content %}
+    {% include 'flash_messages.html.twig' %}
+
+    <div class="form-form_wrap">
+        {{ form_start(user_filter_form) }}
+            {{ form_row(user_filter_form.text) }}
+            {{ form_row(user_filter_form.user_type) }}
+            {{ form_row(user_filter_form.only_active) }}
+
+            <div class="form-button_wrap">
+                <button type="submit">Filter</button>
+                <a href="{{ path('xm_user_admin_user_list') }}" class="form-action_link">Reset</a>
+            </div>
+        {{ form_end(user_filter_form) }}
+    </div>
+
+    {{ knp_pagination_render(pagination) }}
+    <div class="record_list-record_count">Showing {{ pagination.count() }} of {{ pagination.getTotalItemCount() }}</div>
+
+    <ul class="record_list-wrap">
+        <li class="record_list-headers">
+            <div class="record_list-col user_list-username">Username</div>
+            <div class="record_list-col user_list-name">Name</div>
+            <div class="record_list-col user_list-status">Account Status</div>
+            <div class="record_list-col user_list-last_login">Last Login (Count)</div>
+            <div class="record_list-col user_list-role">Roles</div>
+            <div class="record_list-col user_list-edit"></div>
+        </li>
+
+        {% for user in pagination %}
+            <li{% if user.locked or user.enabled == false %} class="record_list-item-inactive"{% endif %}>
+                <div class="record_list-col user_list-username">{{ user.username }}</div>
+                <div class="record_list-col user_list-name">{{ user.name }}</div>
+
+                <div class="record_list-col user_list-status">
+                    {% if user.enabled == false %}
+                        <em>Disabled</em>
+                    {% elseif user.locked == true %}
+                        <em>Locked</em>
+                    {% else %}
+                        Active
+                    {% endif %}
+                </div>
+
+                <div class="record_list-col user_list-last_login">
+                    {% if user.loginCount %}
+                        <a href="{{ path('xm_user_admin_login_history', { 'id' : user.id }) }}"><cs-time datetime="{{ user.lastLogin|date('c') }}">{{ user.lastLogin|date('Y-m-d H:i') }}</cs-time> ({{ user.loginCount }})</a>
+                    {% else %}
+                        <i>Never logged in</i>
+                    {% endif %}
+                </div>
+
+                <div class="record_list-col user_list-role">{{ user.rolesAsText() }}</div>
+                <div class="record_list-col user_list-edit">
+                    <a href="{{ path('xm_user_admin_user_edit', { 'id' : user.id }) }}">Edit</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+
+    {{ knp_pagination_render(pagination) }}
+
+    <div class="user_list-instructions">
+        Disabled and locked users cannot login.<br>
+        Locked users have been locked by administrator or other process.<br>
+        Disabled users have not completed the registration.
+    </div>
+{% endblock content %}

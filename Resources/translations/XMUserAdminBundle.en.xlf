@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="en-CA" datatype="plaintext" original="file.ext">
+        <body>
+            <!-- ****** PARAMETERS ****** -->
+            <trans-unit id="xm_user_admin.parameter.name">
+                <source>xm_user_admin.parameter.name</source>
+                <target>Company Name</target>
+            </trans-unit>
+            <trans-unit id="xm_user_admin.parameter.name_full">
+                <source>xm_user_admin.parameter.name_full</source>
+                <target>Company Name</target>
+            </trans-unit>
+
+            <!-- ****** MESSAGES ****** -->
+            <trans-unit id="xm_user_admin.message.entity_updated">
+                <source>xm_user_admin.message.entity_updated</source>
+                <target>The %name% has been updated.</target>
+            </trans-unit>
+            <trans-unit id="xm_user_admin.message.entity_deleted">
+                <source>xm_user_admin.message.entity_deleted</source>
+                <target>The %name% has been deleted.</target>
+            </trans-unit>
+            <trans-unit id="xm_user_admin.message.validation_errors_continue">
+                <source>xm_user_admin.message.validation_errors_continue</source>
+                <target>Please fix the validation errors before continuing.</target>
+            </trans-unit>
+            <!-- User Messages -->
+            <trans-unit id="xm_user_admin.message.user.activated">
+                <source>xm_user_admin.message.user.activated</source>
+                <target>The user's account has been activated.</target>
+            </trans-unit>
+            <trans-unit id="xm_user_admin.message.user.unlocked">
+                <source>xm_user_admin.message.user.unlocked</source>
+                <target>The user's account was unlocked.</target>
+            </trans-unit>
+            <trans-unit id="xm_user_admin.message.user.locked">
+                <source>xm_user_admin.message.user.locked</source>
+                <target>The user's account has been locked. They will no longer be able to use their account.</target>
+            </trans-unit>
+            <trans-unit id="xm_user_admin.message.user.created">
+                <source>xm_user_admin.message.user.created</source>
+                <target>The user was created and a welcome email was sent with a link to set their password and activate their account.</target>
+            </trans-unit>
+            <trans-unit id="xm_user_admin.message.user.created_set_password">
+                <source>xm_user_admin.message.user.created_set_password</source>
+                <target>The user was created and a welcome email was sent. Please let them know the password you entered.</target>
+            </trans-unit>
+
+            <!-- ****** FORMS ****** -->
+            <trans-unit id="xm_user_admin.form.action.save">
+                <source>xm_user_admin.form.action.save</source>
+                <target>Save</target>
+            </trans-unit>
+            <trans-unit id="xm_user_admin.form.action.send">
+                <source>xm_user_admin.form.action.send</source>
+                <target>Send</target>
+            </trans-unit>
+            <trans-unit id="xm_user_admin.form.action.cancel">
+                <source>xm_user_admin.form.action.cancel</source>
+                <target>Cancel</target>
+            </trans-unit>
+            <trans-unit id="xm_user_admin.form.action.delete">
+                <source>xm_user_admin.form.action.delete</source>
+                <target>Delete</target>
+            </trans-unit>
+            <trans-unit id="xm_user_admin.form.placeholder.select_one">
+                <source>xm_user_admin.form.placeholder.select_one</source>
+                <target>-- Select One --</target>
+            </trans-unit>
+            <trans-unit id="xm_user_admin.form.registration.field.first_name.error.blank">
+                <source>xm_user_admin.form.registration.field.first_name.error.blank</source>
+                <target>Please enter a first name.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

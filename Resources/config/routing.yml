@@ -1,0 +1,3 @@
+xm_security:
+    resource: "@XMUserAdminBundle/Controller/"
+    type:     annotation

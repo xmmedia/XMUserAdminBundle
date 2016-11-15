@@ -1,0 +1,8 @@
+services:
+    # outside services
+    xm_user_admin.paginator: "@knp_paginator"
+
+    # user admin
+    xm_user_admin.filter.user:
+        class: XM\UserAdminBundle\Component\Filter\UserFilter
+        arguments: ["@request_stack", "@session", "@form.factory", "@xm_user_admin.paginator"]

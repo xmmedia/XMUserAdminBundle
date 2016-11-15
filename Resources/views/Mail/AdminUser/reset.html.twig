@@ -1,0 +1,15 @@
+{% extends 'Mail/base.html.twig' %}
+
+{% trans_default_domain 'XMSecurityBundle' %}
+
+{% block subject %}Your {{ 'xm_security.parameter.name'|trans }} Password{% endblock %}
+
+{% block body_text_inner %}{% endblock %}
+
+{% block body_html_inner %}
+    <p>A password reset has been requested by an administrator. To reset your password, use the following link:</p>
+
+    <p><a href="{{ uri }}">{{ uri }}</a></p>
+
+    <p>Your username is: {{ user.username }}</p>
+{% endblock body_html_inner %}
