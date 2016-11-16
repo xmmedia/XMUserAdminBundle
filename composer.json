@@ -23,5 +23,11 @@
         "exclude-from-classmap": [
             "/Tests/"
         ]
-    }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url":  "git@github.com:xmmedia/XMFilterBundle.git"
+        }
+    ]
 }
