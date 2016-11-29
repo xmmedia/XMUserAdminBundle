@@ -139,8 +139,9 @@ class AdminUserController extends Controller
             'uri' => $schemeAndHttpHost.$path,
         ];
 
-        $mailManager = $this->get('app.mail_manager');
-        $result = $mailManager->sendEmail($template, $mailParams, $user->getEmail());
+        $result = $this->get('xm_mail_manager.manager')->getSender()
+            ->setTemplate($template, $mailParams)
+            ->send($user->getEmail());
 
         return $result;
     }
@@ -273,8 +274,9 @@ class AdminUserController extends Controller
             'uri' => $schemeAndHttpHost.$path,
         ];
 
-        $mailManager = $this->get('app.mail_manager');
-        $result = $mailManager->sendEmail($template, $mailParams, $user->getEmail());
+        $result = $this->get('xm_mail_manager.manager')->getSender()
+            ->setTemplate($template, $mailParams)
+            ->send($user->getEmail());
 
         return $result;
     }
