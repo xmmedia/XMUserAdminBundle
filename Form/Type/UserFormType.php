@@ -81,7 +81,7 @@ class UserFormType extends AbstractType
     {
         $resolver->setDefaults([
             // @todo is this right? can we just use the security bundle user?
-            'data_class' => 'XM\SecurityBundle\Entity\User'
+            'data_class' => 'AppBundle\Entity\User'
         ]);
     }
 }

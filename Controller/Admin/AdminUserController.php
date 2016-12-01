@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Entity\User;
-use AppBundle\Form\Type\UserFormType;
+use XM\UserAdminBundle\Form\Type\UserFormType;
 
 /**
  * User controller.
