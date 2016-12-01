@@ -295,10 +295,10 @@ class AdminUserController extends Controller
 
         if ($form->isValid()) {
             if ($request->get('_route') == 'xm_user_admin_user_unlock') {
-                $user->setLocked(false);
+                $user->unlock();
                 $msgKey = 'xm_user_admin.message.user.unlocked';
             } else {
-                $user->setLocked(true);
+                $user->lock();
                 $msgKey = 'xm_user_admin.message.user.locked';
             }
 
