@@ -133,7 +133,7 @@ class AdminUserController extends Controller
             $path = $this->generateUrl('fos_user_security_login');
         }
 
-        $template = '@XMSecurity/Mail/AdminUser/'.$view.'.html.twig';
+        $template = '@XMUserAdmin/Mail/AdminUser/'.$view.'.html.twig';
         $mailParams = [
             'user' => $user,
             'uri' => $schemeAndHttpHost.$path,
@@ -268,7 +268,7 @@ class AdminUserController extends Controller
             'token' => $user->getConfirmationToken(),
         ]);
 
-        $template = '@XMSecurity/Mail/AdminUser/reset.html.twig';
+        $template = '@XMUserAdmin/Mail/AdminUser/reset.html.twig';
         $mailParams = [
             'user' => $user,
             'uri' => $schemeAndHttpHost.$path,
