@@ -63,7 +63,7 @@ class UserFormType extends AbstractType
                 $setPassword = $form->get('setPassword')->getData();
 
                 if (!$setPassword) {
-                    $form->add('password', 'password', [
+                    $form->add('password', PasswordType::class, [
                         'mapped' => false,
                         'label' => 'Password',
                         'required' => false,
