@@ -390,9 +390,7 @@ class AdminUserController extends Controller
     }
 
     /**
-     * "Deletes" a User entity.
-     * Never actually deletes the user, but instead expires the entity and
-     * expires the credentials.
+     * Deletes a User entity.
      *
      * @Route("/{id}", name="xm_user_admin_user_delete")
      * @Method("DELETE")
@@ -405,10 +403,7 @@ class AdminUserController extends Controller
         if ($form->isValid()) {
             $userManager = $this->get('fos_user.user_manager');
 
-            $user->setExpired(true);
-            $user->setCredentialsExpired(true);
-            $user->setCredentialsExpireAt(new \DateTime());
-            $userManager->updateUser($user);
+            $userManager->deleteUser($user);
 
             $msg = $this->get('translator')->trans(
                 'xm_user_admin.message.entity_deleted',
