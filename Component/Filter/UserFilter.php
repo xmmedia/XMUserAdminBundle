@@ -25,7 +25,8 @@ class UserFilter extends FilterComponent
         return [
             'text' => null,
             'user_type' => 'all',
-            'only_active' => true,
+            // 1 = checked
+            'only_active' => 1,
         ];
     }
 

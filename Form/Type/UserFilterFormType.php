@@ -2,10 +2,11 @@
 
 namespace XM\UserAdminBundle\Form\Type;
 
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use XM\FilterBundle\Form\Type\BooleanType;
 use XM\FilterBundle\Form\Type\FilterFormType;
 
 class UserFilterFormType extends FilterFormType
@@ -17,7 +18,7 @@ class UserFilterFormType extends FilterFormType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('text', null, [
+            ->add('text', TextType::class, [
                 'label' => 'Search',
                 'attr' => ['maxlength' => 150],
             ])
@@ -29,7 +30,7 @@ class UserFilterFormType extends FilterFormType
                     'Only Administrators' => 'admin_only',
                 ],
             ])
-            ->add('only_active', CheckboxType::class, [
+            ->add('only_active', BooleanType::class, [
                 'label' => 'Only Active Users',
             ])
         ;
