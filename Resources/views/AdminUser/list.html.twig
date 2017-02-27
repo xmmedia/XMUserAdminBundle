@@ -52,7 +52,9 @@
 
                 <div class="record_list-col user_list-last_login">
                     {% if user.loginCount %}
-                        <a href="{{ path('xm_user_admin_login_history', { 'id' : user.id }) }}"><cs-time datetime="{{ user.lastLogin|date('c') }}">{{ user.lastLogin|date('Y-m-d H:i') }}</cs-time> ({{ user.loginCount }})</a>
+                        <a href="{{ path('xm_user_admin_login_history', { 'id' : user.id }) }}">
+                            <local-time datetime="{{ user.lastLogin|date('c') }}">{{ user.lastLogin|date('Y-m-d H:i') }}</local-time> ({{ user.loginCount }})
+                        </a>
                     {% else %}
                         <i>Never logged in</i>
                     {% endif %}

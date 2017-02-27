@@ -24,7 +24,7 @@
         {% for auth_log in auth_logs %}
             <li>
                 <div class="record_list-col record_list-col-no_wrap">
-                    <cs-time datetime="{{ auth_log.datetime|date('c') }}">{{ auth_log.datetime|date('Y-m-d H:i') }}</cs-time>
+                    <local-time datetime="{{ auth_log.datetime|date('c') }}">{{ auth_log.datetime|date('Y-m-d H:i') }}</local-time>
                 </div>
                 <div class="record_list-col">{{ auth_log.userAgent }}</div>
                 <div class="record_list-col">{{ auth_log.ipAddress }}</div>
