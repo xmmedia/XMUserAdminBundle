@@ -19,7 +19,7 @@ class AdminLoginHistoryController extends Controller
     /**
      * Displays the login history all attempts or for a specific user.
      *
-     * @Route("{id}", name="xm_user_admin_login_history", defaults={"id": null})
+     * @Route("/{id}", name="xm_user_admin_login_history", defaults={"id": null})
      * @Method("GET")
      */
     public function listAction(Request $request, User $user = null)
