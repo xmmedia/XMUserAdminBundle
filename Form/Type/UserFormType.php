@@ -81,7 +81,8 @@ class UserFormType extends AbstractType
     {
         $resolver->setDefaults([
             // @todo is this right? can we just use the security bundle user?
-            'data_class' => 'AppBundle\Entity\User'
+            'data_class' => 'AppBundle\Entity\User',
+            'validation_groups' => 'UserAdmin',
         ]);
     }
 }
