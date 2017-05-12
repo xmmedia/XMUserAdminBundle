@@ -31,9 +31,11 @@ class UserFormType extends AbstractType
                 ],
             ])
             ->add('firstName', null, [
+                'label' => 'First Name',
                 'attr' => ['maxlength' => 255],
             ])
             ->add('lastName', null, [
+                'label' => 'Last Name',
                 'attr' => ['maxlength' => 255],
             ])
             ->add('setPassword', CheckboxType::class, [
