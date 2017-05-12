@@ -8,15 +8,15 @@
             {{ form_row(form.lastName) }}
 
             <div class="form-field_wrap form-field_wrap-checkbox">
-                {{ form_errors(form.setPassword) }}
-                {{
+                {{- form_errors(form.setPassword) -}}
+                {{-
                     form_widget(form.setPassword, {
                         'attr' : {
                             'v-model' : 'setPassword',
                         }
                     })
-                }}
-                {{ form_label(form.setPassword) }}
+                -}}
+                {{- form_label(form.setPassword) -}}
             </div>
             <div class="form-field_wrap" v-show="setPassword">
                 {{ form_label(form.password) }}
