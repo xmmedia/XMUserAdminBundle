@@ -4,6 +4,7 @@ namespace XM\UserAdminBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
+use XM\UserAdminBundle\Form\Type\UserFormType;
 
 /**
  * This is the class that validates and merges configuration from your app/config files
@@ -20,9 +21,25 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('xm_user_admin');
 
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
+        $rootNode
+            ->children()
+                ->arrayNode('forms')
+                    ->addDefaultsIfNotSet()
+                    ->canBeUnset()
+                    ->children()
+                        ->arrayNode('user_admin')
+                            ->addDefaultsIfNotSet()
+                            ->canBeUnset()
+                            ->children()
+                                ->scalarNode('type')
+                                    ->defaultValue(UserFormType::class)
+                                ->end()
+                            ->end()
+                        ->end() // user admin
+                    ->end()
+                ->end() // forms
+            ->end()
+        ;
 
         return $treeBuilder;
     }

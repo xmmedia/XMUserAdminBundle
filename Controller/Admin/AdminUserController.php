@@ -8,7 +8,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Entity\User;
-use XM\UserAdminBundle\Form\Type\UserFormType;
 
 /**
  * User controller.
@@ -106,7 +105,7 @@ class AdminUserController extends Controller
 
         return $this->render('XMUserAdminBundle:AdminUser:create.html.twig', [
             'user' => $user,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         ]);
     }
 
@@ -459,6 +458,8 @@ class AdminUserController extends Controller
      */
     protected function createUserForm(User $user, $options = [])
     {
-        return $this->createForm(UserFormType::class, $user, $options);
+        $form = $this->getParameter('xm_user_admin.forms.user_admin');
+
+        return $this->createForm($form, $user, $options);
     }
 }

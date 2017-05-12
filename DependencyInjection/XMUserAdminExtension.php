@@ -27,5 +27,10 @@ class XMUserAdminExtension extends Extension
             new FileLocator(__DIR__.'/../Resources/config')
         );
         $loader->load('services.yml');
+
+        $container->setParameter(
+            'xm_user_admin.forms.user_admin',
+            $config['forms']['user_admin']['type']
+        );
     }
 }
