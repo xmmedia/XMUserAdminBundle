@@ -55,7 +55,7 @@ class AdminUserController extends Controller
 
         $user = $userManager->createUser();
 
-        $form = $this->createForm(UserFormType::class, $user, [
+        $form = $this->createUserForm($user, [
             'action' => $this->generateUrl('xm_user_admin_user_new'),
             'method' => 'POST',
         ]);
@@ -156,7 +156,7 @@ class AdminUserController extends Controller
     {
         $userManager = $this->get('fos_user.user_manager');
 
-        $editForm = $this->createForm(UserFormType::class, $user, [
+        $editForm = $this->createUserForm($user, [
             'action' => $this->generateUrl('xm_user_admin_user_edit', [
                 'id' => $user->getId()
             ]),
@@ -448,5 +448,17 @@ class AdminUserController extends Controller
         $redirectUrl .= '?'.$this->get('xm_user_admin.filter.user')->query();
 
         return $this->redirect($redirectUrl, 301);
+    }
+
+    /**
+     * Creates the user form instance.
+     *
+     * @param User   $user
+     * @param array $options
+     * @return \Symfony\Component\Form\Form
+     */
+    protected function createUserForm(User $user, $options = [])
+    {
+        return $this->createForm(UserFormType::class, $user, $options);
     }
 }
