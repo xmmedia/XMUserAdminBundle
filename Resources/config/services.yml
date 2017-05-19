@@ -5,7 +5,15 @@ services:
     # user admin
     xm_user_admin.filter.user:
         class: XM\UserAdminBundle\Component\Filter\UserFilter
-        arguments: ["@request_stack", "@session", "@form.factory", "@xm_user_admin.paginator"]
+        arguments:
+            - "@request_stack"
+            - "@session"
+            - "@form.factory"
+            - "@xm_user_admin.paginator"
+        calls:
+            - method: setAdminRoles
+              arguments: ['%xm_user_admin.admin_roles%']
+
     xm_user_admin.twig_extension.user_role:
         class: XM\UserAdminBundle\Twig\Extension\UserRoleExtension
         arguments: ['%xm_user_admin.roles%']

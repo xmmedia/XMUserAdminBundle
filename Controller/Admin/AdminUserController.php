@@ -28,7 +28,9 @@ class AdminUserController extends Controller
             ->getRepository('AppBundle:User');
 
         $userFilter = $this->get('xm_user_admin.filter.user');
-        $form = $userFilter->createForm();
+        $form = $userFilter->createForm([
+            'user_role_choices' => $this->getParameter('xm_user_admin.roles'),
+        ]);
         $userFilter->updateSession();
 
         $qb = $userFilter->createQuery($repo);
@@ -459,6 +461,7 @@ class AdminUserController extends Controller
     protected function createUserForm(User $user, $options = [])
     {
         $form = $this->getParameter('xm_user_admin.forms.user_admin');
+        $options['roles'] = $this->getParameter('xm_user_admin.roles');
 
         return $this->createForm($form, $user, $options);
     }

@@ -29,8 +29,16 @@ class XMUserAdminExtension extends Extension
         $loader->load('services.yml');
 
         $container->setParameter(
-            'xm_user_admin.forms.user_admin',
+            $this->getAlias().'.forms.user_admin',
             $config['forms']['user_admin']['type']
+        );
+        $container->setParameter(
+            $this->getAlias().'.roles',
+            $config['roles']
+        );
+        $container->setParameter(
+            $this->getAlias().'.admin_roles',
+            $config['admin_roles']
         );
     }
 }

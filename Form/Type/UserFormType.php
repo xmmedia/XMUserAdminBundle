@@ -4,6 +4,7 @@ namespace XM\UserAdminBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -56,6 +57,15 @@ class UserFormType extends AbstractType
             ])
         ;
 
+        if (!empty($options['roles'])) {
+            $builder->add('roles', ChoiceType::class, [
+                'label' => 'Roles / Permissions',
+                'choices'  => $options['roles'],
+                'expanded' => true,
+                'multiple' => true,
+            ]);
+        }
+
         // add a form event listener so the password field is not required
         // if the set password field is *not* checked
         $builder->addEventListener(
@@ -83,8 +93,9 @@ class UserFormType extends AbstractType
     {
         $resolver->setDefaults([
             // @todo is this right? can we just use the security bundle user?
-            'data_class' => 'AppBundle\Entity\User',
+            'data_class'        => 'AppBundle\Entity\User',
             'validation_groups' => 'UserAdmin',
+            'roles'             => [],
         ]);
     }
 }

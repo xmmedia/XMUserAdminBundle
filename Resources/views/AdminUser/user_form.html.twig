@@ -1,3 +1,5 @@
+{% form_theme form.roles ':Form:vertical_list.html.twig' %}
+
 <admin-user inline-template>
     <div class="form-form_wrap">
         {{ form_start(form) }}
@@ -29,6 +31,8 @@
                     })
                 }}
             </div>
+
+            {{ form_row(form.roles) }}
 
             <div class="form-button_wrap">
                 <button>Save</button>

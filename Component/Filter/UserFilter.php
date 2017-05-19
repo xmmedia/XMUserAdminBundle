@@ -18,6 +18,11 @@ class UserFilter extends FilterComponent
     protected $formType = UserFilterFormType::class;
 
     /**
+     * @var array
+     */
+    protected $adminRoles = [];
+
+    /**
      * {@inheritdoc}
      */
     public function filterDefaults()
@@ -58,20 +63,43 @@ class UserFilter extends FilterComponent
             ;
         }
         if ($filters['user_type'] != 'all') {
-            $userAdminRole = 'ROLE_SUPER_ADMIN';
+            // admin only or non-admin option
+            if (in_array($filters['user_type'], ['admin_only', 'non_admin'])) {
+                if ($filters['user_type'] == 'admin_only') {
+                    $operator = 'LIKE';
+                    $expr = $qb->expr()->orX();
+                } else if ($filters['user_type'] == 'non_admin') {
+                    $operator = 'NOT LIKE';
+                    $expr = $qb->expr()->andX();
+                }
 
-            if ($filters['user_type'] == 'admin_only') {
-                $operator = 'LIKE';
+                $i = 0;
+                foreach ($this->adminRoles as $role) {
+                    $expr->add('u.roles '.$operator.' :role'.$i);
+                    $qb->setParameter('role'.$i, '%"'.$role.'"%');
+                    ++$i;
+                }
+
+                $qb->andWhere($expr);
+
+
             } else {
-                $operator = 'NOT LIKE';
+                // a specific role
+                $qb->andWhere('u.roles LIKE :role')
+                    ->setParameter('role', '%"'.$filters['user_type'].'"%');
             }
-            $qb->andWhere('u.roles '.$operator.' :role')
-                // parameter includes double quotes so we don't accidentally get a different role
-                // such as ADMIN retrieving ROLE_ADMIN and ROLE_SUPER_ADMIN
-                ->setParameter('role', '%"' . $userAdminRole . '"%')
-            ;
         }
 
         return $qb;
+    }
+
+    /**
+     * Set the admin roles used for filtering on admin & non-admin users.
+     *
+     * @param array $roles
+     */
+    public function setAdminRoles(array $roles = [])
+    {
+        $this->adminRoles = $roles;
     }
 }
