@@ -17,7 +17,8 @@
         "symfony/framework-bundle": "~3.0",
         "doctrine/orm": "~2.5",
         "xm/filter-bundle": "^0.2",
-        "xm/mail-manager-bundle": "^0.3"
+        "xm/mail-manager-bundle": "^0.3",
+        "xm/security-bundle": "^0.2"
     },
     "autoload": {
         "psr-4": { "XM\\UserAdminBundle\\": "" },

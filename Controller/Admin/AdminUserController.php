@@ -125,7 +125,7 @@ class AdminUserController extends Controller
         if (!$passwordIsSetByAdmin) {
             // send a link to the password reset page (from the forgot password function)
             $view = 'welcome';
-            $path = $this->generateUrl('fos_user_resetting_reset', [
+            $path = $this->generateUrl('xm_security_activate', [
                 'token' => $user->getConfirmationToken(),
             ]);
         } else {
