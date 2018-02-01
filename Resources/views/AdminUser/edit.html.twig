@@ -12,6 +12,9 @@
             <ul class="form-extra_actions">
                 {% if user.isEnabled == false %}
                     <li>
+                        <a href="{{ path('xm_security_resend_confirmation', { id: user.id }) }}" class="form-action_link">Resend Activation Email</a>
+                    </li>
+                    <li>
                         {{ form_start(activate_form) }}
                             <button class="button-as_link form-action_link">Activate Account</button>
                         {{ form_end(activate_form) }}
