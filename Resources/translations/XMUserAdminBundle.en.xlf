@@ -46,6 +46,10 @@
                 <source>xm_user_admin.message.user.created_set_password</source>
                 <target>The user was created and a welcome email was sent. Please let them know the password you entered.</target>
             </trans-unit>
+            <trans-unit id="xm_user_admin.message.user.cant_delete">
+                <source>xm_user_admin.message.user.cant_delete</source>
+                <target>The user cannot be deleted.</target>
+            </trans-unit>
 
             <!-- ****** FORMS ****** -->
             <trans-unit id="xm_user_admin.form.action.save">

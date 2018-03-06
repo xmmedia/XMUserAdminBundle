@@ -398,6 +398,20 @@ class AdminUserController extends Controller
      */
     public function deleteAction(Request $request, User $user)
     {
+        if (!$user->isDeletable()) {
+            $msg = $this->get('translator')->trans(
+                'xm_user_admin.message.user.cant_delete',
+                [],
+                'XMUserAdminBundle'
+            );
+            $this->addFlash('danger', $msg);
+
+            return $this->redirectToRoute(
+                'xm_user_admin_user_edit',
+                ['id' => $user->getId()]
+            );
+        }
+
         $form = $this->createDeleteForm($user);
         $form->handleRequest($request);
 

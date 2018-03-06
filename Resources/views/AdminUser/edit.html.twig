@@ -37,13 +37,15 @@
                         }}
                     {{ form_end(lock_unlock_form) }}
                 </li>
-                <li>
-                    <admin-delete
-                        action="{{ delete_form.vars.action }}"
-                        record-desc="User"
-                        csrf-token="{{ delete_form._token.vars.value }}">
-                    </admin-delete>
-                </li>
+                {% if user.deletable %}
+                    <li>
+                        <admin-delete
+                            action="{{ delete_form.vars.action }}"
+                            record-desc="User"
+                            csrf-token="{{ delete_form._token.vars.value }}">
+                        </admin-delete>
+                    </li>
+                {% endif %}
                 <li class="form-extra_actions_text">
                     <div>
                     Account Status:
