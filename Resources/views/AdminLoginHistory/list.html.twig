@@ -15,14 +15,14 @@
     <ul class="record_list-wrap">
         <li class="record_list-headers">
             <div class="record_list-col">Username</div>
-            <div class="record_list-col record_list-col-center">Success</div>
+            <div class="record_list-col record_list-col-center lg:text-center">Success</div>
             <div class="record_list-col">Date/Time</div>
             <div class="record_list-col">Browser/User Agent</div>
             <div class="record_list-col">IP Address</div>
         </li>
 
         {% for auth_log in auth_logs %}
-            <li>
+            <li class="record_list-item">
                 <div class="record_list-col">
                     <a href="{{ path('xm_user_admin_user_list') ~ '?filter[text]=' ~ auth_log.username|e('url') }}">
                         {{ auth_log.username }}
@@ -31,14 +31,14 @@
                         <div>{{ auth_log.message }}</div>
                     {% endif %}
                 </div>
-                <div class="record_list-col record_list-col-center">
+                <div class="record_list-col record_list-col-center lg:text-center">
                     {% if auth_log.success %}
-                        <svg class="record_list-icon icon-green">
+                        <svg class="record_list-icon icon-green text-green-dark">
                             <use xlink:href="#check"></use>
                         </svg>
                     {% endif %}
                 </div>
-                <div class="record_list-col record_list-col-no_wrap">
+                <div class="record_list-col record_list-col-no_wrap whitespace-no-wrap">
                     <local-time datetime="{{ auth_log.datetime|date('c') }}">{{ auth_log.datetime|date('Y-m-d H:i') }}</local-time>
                 </div>
                 <div class="record_list-col">{{ auth_log.userAgent }}</div>

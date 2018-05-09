@@ -12,17 +12,17 @@
             <ul class="form-extra_actions">
                 {% if user.isEnabled == false %}
                     <li>
-                        <a href="{{ path('xm_security_resend_confirmation', { id: user.id }) }}" class="form-action_link">Resend Activation Email</a>
+                        <a href="{{ path('xm_security_resend_confirmation', { id: user.id }) }}" class="form-action form-action_link">Resend Activation Email</a>
                     </li>
                     <li>
                         {{ form_start(activate_form) }}
-                            <button class="button-as_link form-action_link">Activate Account</button>
+                            <button class="button-as_link form-action form-action_link">Activate Account</button>
                         {{ form_end(activate_form) }}
                     </li>
                 {% endif %}
                 <li>
                     {{ form_start(reset_password_form) }}
-                        <button class="button-as_link form-action_link">Send Password Reset</button>
+                        <button class="button-as_link form-action form-action_link">Send Password Reset</button>
                     {{ form_end(reset_password_form) }}
                 </li>
                 <li>
@@ -31,7 +31,7 @@
                         {{
                             form_widget(lock_unlock_form.button, {
                                 'attr' : {
-                                    'class' : 'button-as_link form-action_link'
+                                    'class' : 'button-as_link form-action form-action_link'
                                 }
                             })
                         }}
@@ -46,7 +46,7 @@
                         </admin-delete>
                     </li>
                 {% endif %}
-                <li class="form-extra_actions_text">
+                <li class="form-extra_actions_text pt-1 text-sm text-grey-dark">
                     <div>
                     Account Status:
                     {% if user.enabled == false %}

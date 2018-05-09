@@ -3,13 +3,13 @@
 {% block page_title %}Users | {% endblock %}
 {% block header_page_title %}Users{% endblock %}
 {% block header_actions %}
-    <a href="{{ path('xm_user_admin_user_new') }}" class="header_admin-action header_admin-action-main">Add User</a>
+    <a href="{{ path('xm_user_admin_user_new') }}" class="header-action header-action-main header_admin-action header_admin-action-main">Add User</a>
 {% endblock %}
 
 {% block content %}
     {% include 'flash_messages.html.twig' %}
 
-    <div class="form-form_wrap">
+    <div class="form-wrap form-form_wrap">
         {{ form_start(user_filter_form) }}
             {{ form_row(user_filter_form.text) }}
             {{ form_row(user_filter_form.user_type) }}
@@ -17,7 +17,7 @@
 
             <div class="form-button_wrap">
                 <button type="submit">Filter</button>
-                <a href="{{ path('xm_user_admin_user_list') }}" class="form-action_link">Reset</a>
+                <a href="{{ path('xm_user_admin_user_list') }}" class="form-action form-action_link">Reset</a>
             </div>
         {{ form_end(user_filter_form) }}
     </div>
@@ -36,7 +36,7 @@
         </li>
 
         {% for user in pagination %}
-            <li{% if user.locked or user.enabled == false %} class="record_list-item-inactive"{% endif %}>
+            <li class="record_list-item{% if user.locked or user.enabled == false %} record_list-item-inactive{% endif %}">
                 <div class="record_list-col user_list-username">{{ user.username }}</div>
                 <div class="record_list-col user_list-name">{{ user.name }}</div>
 
